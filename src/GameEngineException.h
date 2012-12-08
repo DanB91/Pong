@@ -1,3 +1,4 @@
+#pragma once
 #include <exception>
 #include <string>
 
@@ -8,11 +9,12 @@ class GameEngineException : public std::exception
 			:message(msg)
 		{}
 
-		virtual const char* what() const throw() { return message.c_str() }
+		virtual const char* what() const throw() { return message.c_str(); }
 
 		virtual ~GameEngineException() throw(){}
 
 	
-	private:
+	protected:
+		GameEngineException(){}
 		std::string message;
 };
