@@ -21,15 +21,7 @@ void GameEngine::popState()
 
 void GameEngine::init()
 {
-	Uint32 sdlFlags = SDL_HWSURFACE | SDL_DOUBLEBUF;
-
-	if(isFullscreen) sdlFlags |= SDL_FULLSCREEN;
-
-	if(SDL_Init(SDL_INIT_EVERYTHING) < 0)
-		throw SDLException("SDL init failed");
-
-	if((screen = SDL_SetVideoMode(resolution.first, resolution.second, 32, sdlFlags)) == NULL)
-		throw SDLException("Screen initialization failed");	
+	mainScreen.init();
 
 	for(auto gs : gameStates)
 		gs->init();
@@ -40,7 +32,10 @@ void  GameEngine::handleEvents(SDL_Event &event)
 	while(SDL_PollEvent(&event))
 	{
 		if(event.type == SDL_QUIT)
+		{
 			quit();
+			return;
+		}
 
 		gameStates.back()->handleEvent(event);		
 	}
@@ -59,7 +54,7 @@ void GameEngine::update()
 
 	handleEvents(event);
 
-	gameStates.back()->update();
+	gameStates.back()->update(*this);
 
 }
 
