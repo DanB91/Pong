@@ -1,6 +1,6 @@
 #include <iostream>
 #include <exception>
-#include "GameEngine.h"
+#include "Engine/GameEngine.h"
 
 
 int main(int argc, char **argv)
