@@ -60,6 +60,8 @@ void GameEngine::update()
 
 void GameEngine::draw()
 {
+	for(auto gs : gameStates)
+		gs->draw(mainScreen);
 }
 
 
