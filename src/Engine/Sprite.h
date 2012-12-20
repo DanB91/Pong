@@ -8,19 +8,19 @@ class Sprite{
 
 	public:
 		~Sprite();
-		Sprite(int width, int height, int x, int y, std::string textureFileName)
-			: width(width), height(height), x(x), y(y), fileName(textureFileName)
+		Sprite(int width, int height,  const std::string &textureFileName)
+			: width(width), height(height), fileName(textureFileName)
 		{}
 
 		void load();
-		void draw(Canvas &mainScreen);
+		void draw(Canvas &mainScreen, int x, int y);
+
+
 	
 
 	protected:
 		int width;
 		int height;
-		int x;
-		int y;
-		std::string fileName;	
+		const std::string fileName;	
 		SDL_Surface *texture;
 };

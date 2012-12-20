@@ -1,5 +1,6 @@
 #include "../GameState.h"
 #include "../Sprite.h"
+#include "../Keyboard.h"
 #include "../GameEngine.h"
 
 class TestGameState : public GameState{
@@ -15,13 +16,14 @@ class TestGameState : public GameState{
 		}
 
 		virtual void handleEvent(const SDL_Event &event, GameEngine &engine){
-			if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
-				engine.quit();
-
+		
 
 		}
 
-		virtual void update(GameEngine &engine){}
+		virtual void update(GameEngine &engine){
+			if(Keyboard::isKeyUp(SDLK_SPACE))
+				engine.quit();
+		}
 
 		virtual void draw(Canvas &mainScreen)
 		{

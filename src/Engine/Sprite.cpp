@@ -18,7 +18,7 @@ void Sprite::load()
 	SDL_FreeSurface(temp);
 }
 
-void Sprite::draw(Canvas &mainScreen)
+void Sprite::draw(Canvas &mainScreen, int x, int y)
 {
 	SDL_Surface *screen = mainScreen.getSDLSurface();
 	SDL_Rect screenPos;

@@ -1,6 +1,7 @@
 #include <SDL/SDL.h>
 #include "GameEngine.h"
 #include "SDLException.h"
+#include "Keyboard.h"
 
 GameEngine::~GameEngine()
 {
@@ -31,13 +32,21 @@ void  GameEngine::handleEvents(SDL_Event &event)
 {
 	while(SDL_PollEvent(&event))
 	{
-		if(event.type == SDL_QUIT)
+		switch(event.type)
 		{
-			quit();
-			return;
+			case SDL_QUIT:
+				quit();
+				return;
+			case SDL_KEYDOWN:
+				Keyboard::setState(event.key);
+				break;
+			case SDL_KEYUP:
+				Keyboard::setState(event.key);
+				break;
 		}
 
-		gameStates.back()->handleEvent(event);		
+		
+		gameStates.back()->handleEvent(event, *this);		
 	}
 }
 

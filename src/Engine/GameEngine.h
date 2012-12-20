@@ -10,6 +10,7 @@ class GameEngine{
 		void pushState(GameState *gs);
 		void popState();
 		void startGameLoop();
+		void quit() {running = false;}	
 
 
 		~GameEngine();
@@ -28,6 +29,6 @@ class GameEngine{
 		void handleEvents(SDL_Event &event);
 		void update();
 		void draw();
-		void quit() {running = false;}
+		
 
 };
