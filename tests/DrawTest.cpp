@@ -1,12 +1,14 @@
-#include "../GameState.h"
-#include "../Sprite.h"
-#include "../Keyboard.h"
-#include "../GameEngine.h"
+#include "Engine/GameState.h"
+#include "Engine/Sprite.h"
+#include "Engine/GameEngine.h"
 
 class TestGameState : public GameState{
 
 
 	public:
+        virtual ~TestGameState()
+        {}
+
 		TestGameState(const char *fn)
 			: s(20, 20, fn)
 		{}
@@ -16,14 +18,13 @@ class TestGameState : public GameState{
 		}
 
 		virtual void handleEvent(const SDL_Event &event, GameEngine &engine){
-		
-
-		}
-
-		virtual void update(GameEngine &engine){
-			if(Keyboard::isKeyUp(SDLK_SPACE))
+			if(event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE)
 				engine.quit();
+
+
 		}
+
+		virtual void update(GameEngine &engine){}
 
 		virtual void draw(Canvas &mainScreen)
 		{
@@ -41,6 +42,8 @@ int main(int argc, char *argv[])
 	e.pushState(new TestGameState(argv[1]));
 
 	e.startGameLoop();
+
+    return 0;
 
 
 }
