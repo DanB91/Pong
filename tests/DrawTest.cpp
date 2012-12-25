@@ -10,7 +10,7 @@ class TestGameState : public GameState{
         {}
 
 		TestGameState(const char *fn)
-			: s(20, 20, fn)
+			: s(fn)
 		{}
 
 		virtual void init(){

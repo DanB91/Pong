@@ -8,8 +8,8 @@ class Sprite{
 
 	public:
 		~Sprite();
-		Sprite(int width, int height,  const std::string &textureFileName)
-			: width(width), height(height), fileName(textureFileName)
+		Sprite(const std::string &textureFileName)
+			: fileName(textureFileName), texture(NULL)
 		{}
 
 		void load();
@@ -19,8 +19,6 @@ class Sprite{
 	
 
 	protected:
-		int width;
-		int height;
 		const std::string fileName;	
 		SDL_Surface *texture;
 };

@@ -1,8 +1,9 @@
-add_executable(drawTest DrawTest.cpp)
-target_link_libraries(drawTest engine)
-add_test(DrawTest drawTest)
+macro (make_test target src)
+     add_executable(${target} ${src})
+    target_link_libraries(${target} engine)
+endmacro (make_test)
 
-add_executable(keyboardTest KeyboardTest.cpp)
-target_link_libraries(keyboardTest engine)
-add_test(KeyboardTest keyboardTest ~/Documents/Untitled.bmp)
+make_test(drawTest DrawTest.cpp)
 
+make_test(keyboardTest KeyboardTest.cpp)
+make_test(spriteDrawableComponentTest SpriteDrawableComponentTest.cpp)

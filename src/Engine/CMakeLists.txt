@@ -1,7 +1,5 @@
-find_package(SDL REQUIRED)
 
-set(CMAKE_CXX_FLAGS "-std=c++11")
-set(ObjectFiles GameEngine.cpp Canvas.cpp Sprite.cpp Keyboard.cpp)
+set(ObjectFiles GameEngine.cpp Canvas.cpp Sprite.cpp Keyboard.cpp Entity.cpp SpriteDrawableComponent.cpp)
 include_directories(${PROJECT_SOURCE_DIR})
 
 

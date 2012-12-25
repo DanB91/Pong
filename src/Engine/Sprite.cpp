@@ -3,7 +3,8 @@
 
 Sprite::~Sprite()
 {
-	SDL_FreeSurface(texture);
+	if(texture)
+        SDL_FreeSurface(texture);
 }
 
 void Sprite::load()

@@ -10,22 +10,23 @@ GameEngine::~GameEngine()
 
 void GameEngine::pushState(GameState *gs)
 {
-	gameStates.push_back(gs);
+	gameStates.push_back(std::shared_ptr<GameState>(gs));
+
 }
 
 void GameEngine::popState()
 {
-	delete gameStates.back();
 	gameStates.pop_back();
-
 }
 
 void GameEngine::init()
 {
 	mainScreen.init();
 
-	for(auto gs : gameStates)
+	for(auto gs : gameStates){
 		gs->init();
+         
+    }
 }
 
 void  GameEngine::handleEvents(SDL_Event &event)

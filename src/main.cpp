@@ -6,8 +6,8 @@
 int main(int argc, char **argv)
 {
 	GameEngine engine(640, 480);
-
-	try{
+    
+    try{
 		engine.startGameLoop();
 	}	
 	catch(std::exception &e){
