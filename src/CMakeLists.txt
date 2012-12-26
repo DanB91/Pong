@@ -1,8 +1,8 @@
 
 
-set(ObjectFiles main.cpp)
+set(ObjectFiles main.cpp )
 add_subdirectory(Engine)
-
+add_subdirectory(tests tests)
 
 
 add_executable (pong ${ObjectFiles})

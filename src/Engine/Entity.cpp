@@ -1,43 +1,21 @@
 #include "Entity.h"
 #include "ComponentNotFoundException.h"
 
-void Entity::addComponent(Component *c)
+void Entity::addComponent(const std::string &componentID, Component *c)
 {
-    components.push_back(std::shared_ptr<Component>(c));
+    components[componentID] = std::shared_ptr<Component>(c);
 }
 
-Component& Entity::getComponent(const std::string componentID)
+Component& Entity::getComponent(const std::string &componentID)
 {
-    for(auto comp : components)
-    {
-        if(comp->getID() == componentID)
-            return *comp;
+    try{
+        return *components.at(componentID);
     }
-
-    throw ComponentNotFoundException(componentID);
-}
-
-void Entity::init()
-{
-    for(auto comp : components)
-    {
-        comp->init();
+    catch(std::out_of_range &){
+        throw ComponentNotFoundException(componentID);
     }
 }
 
-void Entity::update(GameEngine &game, int deltaInMS)
-{
-    for(auto comp : components)
-    {
-        comp->update(game, deltaInMS);
-    }
-}
 
-void Entity::draw(Canvas &mainScreen)
-{
 
-    for(auto comp : components)
-    {
-        comp->draw(mainScreen);
-    }
-}
+

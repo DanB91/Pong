@@ -13,4 +13,3 @@ ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 include_directories(src)
 
 add_subdirectory(src bin)
-add_subdirectory(tests tests)
