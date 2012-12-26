@@ -1,7 +1,8 @@
+
 set(CMAKE_CXX_LINK_FLAGS "-lcppunit")
 
 IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-   set(CMAKE_CXX_LINK_FLAGS " -lcppunit")
+   set(CMAKE_CXX_LINK_FLAGS "-lcppunit")
 ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
     

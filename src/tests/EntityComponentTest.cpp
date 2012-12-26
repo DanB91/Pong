@@ -18,6 +18,7 @@ class EntityComponentTest : public CppUnit::TestFixture
     CPPUNIT_TEST_SUITE( EntityComponentTest );
     CPPUNIT_TEST( testGetComponents );
     CPPUNIT_TEST_SUITE_END();
+    
     Entity e;
     
     
@@ -39,10 +40,13 @@ class EntityComponentTest : public CppUnit::TestFixture
 
 
 };
+CPPUNIT_TEST_SUITE_REGISTRATION( EntityComponentTest );
+
 
 int main(void)
 {
-    CppUnit::TextUi::TestRunner run;
+
+        CppUnit::TextUi::TestRunner run;
     CppUnit::TestFactoryRegistry &r = CppUnit::TestFactoryRegistry::getRegistry();
     run.addTest(r.makeTest());
 

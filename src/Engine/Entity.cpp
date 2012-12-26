@@ -1,5 +1,6 @@
 #include "Entity.h"
 #include "ComponentNotFoundException.h"
+#include <stdexcept>
 
 void Entity::addComponent(const std::string &componentID, Component *c)
 {
