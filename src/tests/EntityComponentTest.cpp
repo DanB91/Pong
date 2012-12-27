@@ -39,23 +39,23 @@ class EntityComponentTest : public CppUnit::TestFixture
 
     void testGetComponents()
     {
-        TestComponent &first = static_cast<TestComponent&>(e->getComponent("1"));
-        TestComponent &second = static_cast<TestComponent&>(e->getComponent("2"));
+        auto first = e->getComponent<TestComponent>("1");
+        auto second = e->getComponent<TestComponent>("2");
 
-        CPPUNIT_ASSERT(first.msg == "Hello 1");
-        CPPUNIT_ASSERT(second.msg == "Hello 2");
+        CPPUNIT_ASSERT(first->msg == "Hello 1");
+        CPPUNIT_ASSERT(second->msg == "Hello 2");
         
     }
 
     void testChangeComponents()
     {
-        TestComponent &c = e->getComponent<TestComponent>("1");
+        auto c = e->getComponent<TestComponent>("1");
 
-        c.msg = "Changed message";
+        c->msg = "Changed message";
 
         c = e->getComponent<TestComponent>("1");
 
-        CPPUNIT_ASSERT(c.msg == "Changed message");
+        CPPUNIT_ASSERT(c->msg == "Changed message");
     }
 
 

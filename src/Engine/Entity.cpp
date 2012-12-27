@@ -9,10 +9,10 @@ namespace Engine{
     }
 
     template <class T>
-        T& Entity::getComponent(const std::string &componentID) const
+        std::tr1::shared_ptr<T> Entity::getComponent(const std::string &componentID) const
     {
         try{
-            return static_cast<T&>(*components.at(componentID));
+            return std::tr1::static_pointer_cast<T>(components.at(componentID));
         }
         catch(std::out_of_range &){
             throw ComponentNotFoundException(componentID);

@@ -18,7 +18,7 @@ namespace Engine{
 
             //throws ComponentNotFoundException if component is not found
             //class T must be a subclass of component
-            template <class T = Component> T &getComponent(const std::string &componentID) const;  
+            template <class T = Component> std::tr1::shared_ptr<T> getComponent(const std::string &componentID) const;  
 
         private:
             std::map<std::string, std::tr1::shared_ptr<Component>> components;
