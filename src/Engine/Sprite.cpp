@@ -1,32 +1,36 @@
 #include "Sprite.h"
 #include "SDLException.h"
 
-Sprite::~Sprite()
-{
-	if(texture)
-        SDL_FreeSurface(texture);
-}
+namespace Engine{
 
-void Sprite::load()
-{
-	SDL_Surface *temp;
+    Sprite::~Sprite()
+    {
+        if(texture)
+            SDL_FreeSurface(texture);
+    }
 
-	if((temp = SDL_LoadBMP(fileName.c_str())) == NULL)
-		throw SDLException("Failed to load sprite");
+    void Sprite::load()
+    {
+        SDL_Surface *temp;
 
-	texture = SDL_DisplayFormat(temp);
+        if((temp = SDL_LoadBMP(fileName.c_str())) == NULL)
+            throw SDLException("Failed to load sprite");
 
-	SDL_FreeSurface(temp);
-}
+        texture = SDL_DisplayFormat(temp);
 
-void Sprite::draw(Canvas &mainScreen, int x, int y)
-{
-	SDL_Surface *screen = mainScreen.getSDLSurface();
-	SDL_Rect screenPos;
+        SDL_FreeSurface(temp);
+    }
 
-	screenPos.x = x;
-	screenPos.y = y;
+    void Sprite::draw(Canvas &mainScreen, int x, int y)
+    {
+        SDL_Surface *screen = mainScreen.getSDLSurface();
+        SDL_Rect screenPos;
 
-	SDL_BlitSurface(texture, NULL, screen, &screenPos);
-	SDL_Flip(screen);
+        screenPos.x = x;
+        screenPos.y = y;
+
+        SDL_BlitSurface(texture, NULL, screen, &screenPos);
+        SDL_Flip(screen);
+    }
+
 }

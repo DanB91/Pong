@@ -2,12 +2,16 @@
 #include "GameEngineException.h"
 #include <SDL/SDL.h>
 
-class SDLException : public GameEngineException{
+namespace Engine{
 
-	public:
-		SDLException(std::string msg)
-			: GameEngineException()
-		{
-			GameEngineException::message = msg + ": " + SDL_GetError();
-		}
-};
+    class SDLException : public GameEngineException{
+
+        public:
+            SDLException(std::string msg)
+                : GameEngineException()
+            {
+                GameEngineException::message = msg + ": " + SDL_GetError();
+            }
+    };
+
+}

@@ -3,6 +3,8 @@
 #include "Engine/Keyboard.h"
 #include "Engine/GameEngine.h"
 
+using namespace Engine;
+
 class TestGameState : public GameState{
 
 

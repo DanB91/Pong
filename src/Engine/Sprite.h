@@ -4,21 +4,25 @@
 #include<string>
 
 #include "Canvas.h"
-class Sprite{
 
-	public:
-		~Sprite();
-		Sprite(const std::string &textureFileName)
-			: fileName(textureFileName), texture(NULL)
-		{}
+namespace Engine{
+    class Sprite{
 
-		void load();
-		void draw(Canvas &mainScreen, int x, int y);
+        public:
+            ~Sprite();
+            Sprite(const std::string &textureFileName)
+                : fileName(textureFileName), texture(NULL)
+            {}
+
+            void load();
+            void draw(Canvas &mainScreen, int x, int y);
 
 
-	
 
-	protected:
-		const std::string fileName;	
-		SDL_Surface *texture;
-};
+
+        protected:
+            const std::string fileName;	
+            SDL_Surface *texture;
+    };
+
+}

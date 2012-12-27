@@ -5,6 +5,8 @@
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/CompilerOutputter.h>
 
+using namespace Engine;
+
 class TestComponent : public Component{
     public:
         TestComponent(std::string msg)
@@ -18,6 +20,7 @@ class EntityComponentTest : public CppUnit::TestFixture
 {
     CPPUNIT_TEST_SUITE( EntityComponentTest );
     CPPUNIT_TEST( testGetComponents );
+    CPPUNIT_TEST( testChangeComponents );
     CPPUNIT_TEST_SUITE_END();
     
     Entity e;
@@ -39,6 +42,17 @@ class EntityComponentTest : public CppUnit::TestFixture
         CPPUNIT_ASSERT(first.msg == "Hello 1");
         CPPUNIT_ASSERT(second.msg == "Hello 2");
         
+    }
+
+    void testChangeComponents()
+    {
+        TestComponent &c = static_cast<TestComponent&>(e.getComponent("1"));
+
+        c.msg = "Changed message";
+
+        c = static_cast<TestComponent&>(e.getComponent("1"));
+
+        CPPUNIT_ASSERT(c.msg == "Changed message");
     }
 
 

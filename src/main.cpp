@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv)
 {
-	GameEngine engine(640, 480);
+    Engine::GameEngine engine(640, 480);
     
     try{
 		engine.startGameLoop();

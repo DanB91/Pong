@@ -2,6 +2,8 @@
 #include "Engine/Sprite.h"
 #include "Engine/GameEngine.h"
 
+using namespace Engine;
+
 class TestGameState : public GameState{
 
 
