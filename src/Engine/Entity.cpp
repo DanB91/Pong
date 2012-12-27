@@ -4,10 +4,10 @@
 
 void Entity::addComponent(const std::string &componentID, Component *c)
 {
-    components[componentID] = std::shared_ptr<Component>(c);
+    components[componentID] = std::tr1::shared_ptr<Component>(c);
 }
 
-Component& Entity::getComponent(const std::string &componentID)
+Component& Entity::getComponent(const std::string &componentID) const
 {
     try{
         return *components.at(componentID);

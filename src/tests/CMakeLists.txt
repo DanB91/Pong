@@ -1,14 +1,10 @@
+find_package(CppUnit REQUIRED)
+include_directories(${CPPUNIT_INCLUDE_DIRS})
+set(LIBS ${LIBS} ${CPPUNIT_LIBRARIES} engine)
 
-set(CMAKE_CXX_LINK_FLAGS "-lcppunit")
-
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-   set(CMAKE_CXX_LINK_FLAGS "-lcppunit")
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-
-    
 macro (make_test target src)
      add_executable(${target} ${src})
-    target_link_libraries(${target} engine)
+    target_link_libraries(${target} ${LIBS})
 endmacro (make_test)
 
 make_test(drawTest DrawTest.cpp)

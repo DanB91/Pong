@@ -10,7 +10,7 @@ GameEngine::~GameEngine()
 
 void GameEngine::pushState(GameState *gs)
 {
-	gameStates.push_back(std::shared_ptr<GameState>(gs));
+	gameStates.push_back(shared_ptr<GameState>(gs));
 
 }
 

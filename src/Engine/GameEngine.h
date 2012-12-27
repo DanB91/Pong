@@ -1,10 +1,10 @@
 #pragma once
 #include <vector>
-#include <memory>
+#include <tr1/memory>
 #include <SDL/SDL.h>
 #include "GameState.h"
 #include "Canvas.h"
-
+using namespace std::tr1;
 class GameEngine{
 
 	public:
@@ -23,7 +23,7 @@ class GameEngine{
 	private:
 		Canvas mainScreen;
 		bool running;  //tells if the game is running
-		std::vector<std::shared_ptr<GameState>> gameStates; //holds the states of a game
+		std::vector<shared_ptr<GameState>> gameStates; //holds the states of a game
 		bool isFullscreen;
 
 		void init();

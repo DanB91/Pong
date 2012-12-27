@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <tr1/memory>
 #include <vector>
 
 class System{

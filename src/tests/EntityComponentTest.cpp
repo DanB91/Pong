@@ -3,6 +3,7 @@
 #include <cppunit/extensions/TestFactoryRegistry.h>
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/CompilerOutputter.h>
 
 class TestComponent : public Component{
     public:
@@ -27,6 +28,8 @@ class EntityComponentTest : public CppUnit::TestFixture
         e.addComponent("1", new TestComponent("Hello 1"));
         e.addComponent("2", new TestComponent("Hello 2"));
     }
+    
+    void tearDown(){}
 
     void testGetComponents()
     {
@@ -40,17 +43,26 @@ class EntityComponentTest : public CppUnit::TestFixture
 
 
 };
+
+
 CPPUNIT_TEST_SUITE_REGISTRATION( EntityComponentTest );
 
 
-int main(void)
+int main(int argc, char *argv[])
 {
 
-        CppUnit::TextUi::TestRunner run;
-    CppUnit::TestFactoryRegistry &r = CppUnit::TestFactoryRegistry::getRegistry();
-    run.addTest(r.makeTest());
+    CppUnit::Test *suite = CppUnit::TestFactoryRegistry::getRegistry().makeTest();
 
-    run.run("", false, true);
+    // Adds the test to the list of test to run
+    CppUnit::TextUi::TestRunner runner;
+    runner.addTest( suite );
 
-    return 0;
+    // Change the default outputter to a compiler error format outputter
+    runner.setOutputter( new CppUnit::CompilerOutputter( &runner.result(),
+                std::cerr ) );
+    // Run the tests.
+    bool wasSucessful = runner.run();
+
+    // Return error code 1 if the one of test failed.
+    return wasSucessful ? 0 : 1;
 }
