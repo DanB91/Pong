@@ -23,21 +23,24 @@ class EntityComponentTest : public CppUnit::TestFixture
     CPPUNIT_TEST( testChangeComponents );
     CPPUNIT_TEST_SUITE_END();
     
-    Entity e;
+    Entity *e;
     
     
     public:
     void setUp(){
-        e.addComponent("1", new TestComponent("Hello 1"));
-        e.addComponent("2", new TestComponent("Hello 2"));
+        e = new Entity("test");
+        e->addComponent("1", new TestComponent("Hello 1"));
+        e->addComponent("2", new TestComponent("Hello 2"));
     }
     
-    void tearDown(){}
+    void tearDown(){
+        delete e;
+    }
 
     void testGetComponents()
     {
-        TestComponent &first = static_cast<TestComponent&>(e.getComponent("1"));
-        TestComponent &second = static_cast<TestComponent&>(e.getComponent("2"));
+        TestComponent &first = static_cast<TestComponent&>(e->getComponent("1"));
+        TestComponent &second = static_cast<TestComponent&>(e->getComponent("2"));
 
         CPPUNIT_ASSERT(first.msg == "Hello 1");
         CPPUNIT_ASSERT(second.msg == "Hello 2");
@@ -46,11 +49,11 @@ class EntityComponentTest : public CppUnit::TestFixture
 
     void testChangeComponents()
     {
-        TestComponent &c = static_cast<TestComponent&>(e.getComponent("1"));
+        TestComponent &c = e->getComponent<TestComponent>("1");
 
         c.msg = "Changed message";
 
-        c = static_cast<TestComponent&>(e.getComponent("1"));
+        c = e->getComponent<TestComponent>("1");
 
         CPPUNIT_ASSERT(c.msg == "Changed message");
     }

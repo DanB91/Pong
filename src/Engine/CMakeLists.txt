@@ -1,5 +1,5 @@
 
-set(ObjectFiles GameEngine.cpp Canvas.cpp Sprite.cpp Keyboard.cpp Entity.cpp)
+set(ObjectFiles GameEngine.cpp Canvas.cpp Sprite.cpp Keyboard.cpp )
 include_directories(${PROJECT_SOURCE_DIR})
 
 
