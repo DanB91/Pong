@@ -2,10 +2,11 @@
 
 #include <SDL/SDL.h>
 #include<string>
+#include "IDrawable.h"
 
 
 namespace Engine{
-    class Sprite{
+    class Sprite : public IDrawable{
 
         public:
             ~Sprite();
@@ -15,7 +16,7 @@ namespace Engine{
 
             void load();
             
-            SDL_Surface *getSDLSurface() { return texture; }
+            virtual SDL_Surface *getSDLSurface() { return texture; }
 
 
 

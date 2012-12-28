@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL/SDL.h>
-#include "Sprite.h"
+#include "IDrawable.h"
 
 namespace Engine{
 
@@ -11,7 +11,7 @@ namespace Engine{
             {}
 
             void init();	
-            void drawSprite(Sprite &sprite, int posX, int posY);
+            void drawSurface(IDrawable &surface, int posX, int posY);
             
             //flip the buffered to sprites to the screen
             void flip();
