@@ -30,7 +30,7 @@ class TestGameState : public GameState{
 
 		virtual void draw(Canvas &mainScreen)
 		{
-			mainScreen.drawSurface(s, 100, 0);
+			mainScreen.drawDrawable(s, 100, 0);
 		}
 
 	private:

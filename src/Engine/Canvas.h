@@ -11,7 +11,7 @@ namespace Engine{
             {}
 
             void init();	
-            void drawSurface(IDrawable &surface, int posX, int posY);
+            void drawDrawable(IDrawable &surface, int posX, int posY);
             
             //flip the buffered to sprites to the screen
             void flip();

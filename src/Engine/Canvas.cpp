@@ -17,7 +17,7 @@ namespace Engine{
             throw SDLException("Screen initialization failed");
     }
 
-    void Canvas::drawSurface(IDrawable &surface, int posX, int posY)
+    void Canvas::drawDrawable(IDrawable &surface, int posX, int posY)
     {
         SDL_Surface *sdlSurface = surface.getSDLSurface();
         SDL_Rect screenPos;
