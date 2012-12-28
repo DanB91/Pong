@@ -28,7 +28,7 @@ namespace Engine{
 
             void init();
             void handleEvents(SDL_Event &event);
-            void update();
+            void update(int deltaInMS);
             void draw();
 
 

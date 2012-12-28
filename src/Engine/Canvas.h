@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL/SDL.h>
+#include "Sprite.h"
 
 namespace Engine{
 
@@ -10,8 +11,10 @@ namespace Engine{
             {}
 
             void init();	
-            SDL_Surface* getSDLSurface(){ return canvas; }
-
+            void drawSprite(Sprite &sprite, int posX, int posY);
+            
+            //flip the buffered to sprites to the screen
+            void flip();
 
         private:
             SDL_Surface *canvas;

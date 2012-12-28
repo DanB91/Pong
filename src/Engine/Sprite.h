@@ -3,7 +3,6 @@
 #include <SDL/SDL.h>
 #include<string>
 
-#include "Canvas.h"
 
 namespace Engine{
     class Sprite{
@@ -15,7 +14,8 @@ namespace Engine{
             {}
 
             void load();
-            void draw(Canvas &mainScreen, int x, int y);
+            
+            SDL_Surface *getSDLSurface() { return texture; }
 
 
 

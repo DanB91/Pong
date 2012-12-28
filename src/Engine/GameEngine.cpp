@@ -52,7 +52,7 @@ namespace Engine{
         }
     }
 
-    void GameEngine::update()
+    void GameEngine::update(int detlaInMS)
     {
         SDL_Event event;
 
@@ -65,7 +65,7 @@ namespace Engine{
 
         handleEvents(event);
 
-        gameStates.back()->update(*this);
+        gameStates.back()->update(*this, detlaInMS);
 
     }
 
@@ -73,19 +73,33 @@ namespace Engine{
     {
         for(auto gs : gameStates)
             gs->draw(mainScreen);
+
+        mainScreen.flip();
+
     }
 
 
 
     void GameEngine::startGameLoop()
     {
+        int deltaInMS = 0;
+        int startTime;
+
+
         init();
 
-
+        startTime = SDL_GetTicks();
         while(running)
         {
-            update();
+
+            update(deltaInMS);
             draw();
+            
+            deltaInMS = SDL_GetTicks() - startTime;
+            startTime = SDL_GetTicks();
+
+            
+
         }
     }
 }

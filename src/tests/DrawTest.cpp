@@ -26,11 +26,11 @@ class TestGameState : public GameState{
 
 		}
 
-		virtual void update(GameEngine &engine){}
+		virtual void update(GameEngine &engine, int d){}
 
 		virtual void draw(Canvas &mainScreen)
 		{
-			s.draw(mainScreen, 100, 0);
+			mainScreen.drawSprite(s, 100, 0);
 		}
 
 	private:

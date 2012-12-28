@@ -21,16 +21,6 @@ namespace Engine{
         SDL_FreeSurface(temp);
     }
 
-    void Sprite::draw(Canvas &mainScreen, int x, int y)
-    {
-        SDL_Surface *screen = mainScreen.getSDLSurface();
-        SDL_Rect screenPos;
-
-        screenPos.x = x;
-        screenPos.y = y;
-
-        SDL_BlitSurface(texture, NULL, screen, &screenPos);
-        SDL_Flip(screen);
-    }
+ 
 
 }

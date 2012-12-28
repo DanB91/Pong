@@ -11,7 +11,7 @@ namespace Engine{
             virtual ~GameState(){};
             virtual void init() = 0;
             virtual void handleEvent(const SDL_Event &event, GameEngine &engine) = 0;
-            virtual void update(GameEngine &engine) = 0;
+            virtual void update(GameEngine &engine, int deltaInMS) = 0;
             virtual void draw(Canvas &mainScreen) = 0;
     };
 }
