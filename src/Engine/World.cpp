@@ -7,15 +7,28 @@ namespace Engine{
         entities.push_back(std::tr1::shared_ptr<Entity>(entity));
     }
 
-    void World::addSystem(System *system)
+    void World::addUpdateSystem(UpdateSystem *system)
     {
-        systems.push_back(std::tr1::shared_ptr<System>(system));
+        updateSystems.push_back(std::tr1::shared_ptr<UpdateSystem>(system));
     }
 
-    void World::process(int deltaInMS)
+    void World::addDrawSystem(DrawSystem *system)
     {
-        for(auto proc : systems){
+        drawSystems.push_back(std::tr1::shared_ptr<DrawSystem>(system));
+    }
+
+
+    void World::update(int deltaInMS)
+    {
+        for(auto proc : updateSystems){
             proc->process(entities, deltaInMS);
+        }
+    }
+
+    void World::draw(Canvas &mainScreen)
+    {
+        for(auto proc : drawSystems){
+            proc->process(entities, mainScreen);
         }
     }
 

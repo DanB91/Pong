@@ -3,7 +3,8 @@
 #include <vector>
 
 namespace Engine{
-    class System{
+    
+    class UpdateSystem{
         public:
             virtual void process(const std::vector<std::tr1::shared_ptr<Entity>> &entities, int deltaInMS) = 0;
     };

@@ -13,7 +13,7 @@ namespace Engine{
     {
         SDL_Surface *temp;
 
-        if((temp = SDL_LoadBMP(fileName.c_str())) == NULL)
+        if((temp = IMG_Load(fileName.c_str())) == NULL)
             throw SDLException("Failed to load sprite");
 
         texture = SDL_DisplayFormat(temp);
