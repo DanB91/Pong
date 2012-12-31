@@ -2,6 +2,7 @@
 #include <tr1/memory>
 #include <vector>
 #include "Canvas.h"
+#include "Entity.h"
 
 namespace Engine{
     

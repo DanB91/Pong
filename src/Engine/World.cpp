@@ -20,15 +20,15 @@ namespace Engine{
 
     void World::update(int deltaInMS)
     {
-        for(auto proc : updateSystems){
-            proc->process(entities, deltaInMS);
+        for(auto sys : updateSystems){
+            sys->process(entities, deltaInMS);
         }
     }
 
     void World::draw(Canvas &mainScreen)
     {
-        for(auto proc : drawSystems){
-            proc->process(entities, mainScreen);
+        for(auto sys : drawSystems){
+            sys->process(entities, mainScreen);
         }
     }
 
