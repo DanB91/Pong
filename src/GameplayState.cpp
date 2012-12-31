@@ -6,19 +6,19 @@
 namespace Pong{
 
 
-    static Engine::Entity *createPlayer()
+    static void createPlayer(Engine::World &world)
     {
-        Engine::Entity *ret = new Engine::Entity("player");
-        ret->addComponent("sprite", new Components::SpatialComponent(0, 0, "../res/BallAndPaddle.png"));
+        auto player = world.createEntity("sprite");
+        player->addComponent("sprite", new Components::SpatialComponent(10, 0, 0, "../res/BallAndPaddle.png"));
 
-        return ret;
+       
     }
 
     
 
     void GameplayState::init()
     {
-        world.addEntity(createPlayer());
+        createPlayer(world);
         world.addDrawSystem(new Systems::DrawSpritesSystem()); 
      }
 
@@ -28,7 +28,7 @@ namespace Pong{
             engine.quit();
         }
 
-        world.update(deltaInMS);
+        world.update(engine, deltaInMS);
         
     }
 

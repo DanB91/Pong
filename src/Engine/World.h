@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "UpdateSystem.h"
 #include "DrawSystem.h"
+#include "GameEngine.h"
 
 namespace Engine{
 
@@ -12,6 +13,8 @@ namespace Engine{
         public:
             void addEntity(Entity *entity);
 
+            std::tr1::shared_ptr<Entity> createEntity(const std::string id);
+
             //add system to be processed on update 
             void addUpdateSystem(UpdateSystem *system);
 
@@ -19,9 +22,9 @@ namespace Engine{
             void addDrawSystem(DrawSystem *system);
 
             //process all update systems
-            void update(int deltaInMS);
+            void update(Engine::GameEngine &engine, int deltaInMS);
 
-            void draw(Canvas &mainScreen);
+            void draw( Canvas &mainScreen);
 
 
         private:

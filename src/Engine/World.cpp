@@ -7,6 +7,16 @@ namespace Engine{
         entities.push_back(std::tr1::shared_ptr<Entity>(entity));
     }
 
+
+    std::tr1::shared_ptr<Entity> World::createEntity(const std::string id)
+    {
+        std::tr1::shared_ptr<Entity> ret = std::tr1::shared_ptr<Entity>(new Entity(id));
+
+        entities.push_back(ret);
+
+        return ret;
+    }
+    
     void World::addUpdateSystem(UpdateSystem *system)
     {
         updateSystems.push_back(std::tr1::shared_ptr<UpdateSystem>(system));
@@ -18,10 +28,10 @@ namespace Engine{
     }
 
 
-    void World::update(int deltaInMS)
+    void World::update(Engine::GameEngine &engine, int deltaInMS)
     {
         for(auto sys : updateSystems){
-            sys->process(entities, deltaInMS);
+            sys->process(entities, engine, deltaInMS);
         }
     }
 
@@ -31,5 +41,4 @@ namespace Engine{
             sys->process(entities, mainScreen);
         }
     }
-
 }
