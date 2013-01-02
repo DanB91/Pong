@@ -1,6 +1,6 @@
 
 
-set(ObjectFiles main.cpp GameplayState.cpp DrawSpritesSystem.cpp)
+set(ObjectFiles main.cpp GameplayState.cpp DrawSpritesSystem.cpp PlayerMovementSystem.cpp)
 add_subdirectory(Engine)
 add_subdirectory(tests tests)
 

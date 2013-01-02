@@ -2,14 +2,15 @@
 #include "Engine/Keyboard.h"
 #include "PongComponents.h"
 #include "DrawSpritesSystem.h"
+#include "PlayerMovementSystem.h"
 
 namespace Pong{
 
 
     static void createPlayer(Engine::World &world)
     {
-        auto player = world.createEntity("sprite");
-        player->addComponent("sprite", new Components::SpatialComponent(10, 0, 0, "../res/BallAndPaddle.png"));
+        auto player = world.createEntity("player");
+        player->addComponent("sprite", new Components::SpatialComponent(10, 0, 10, "../res/BallAndPaddle.png"));
 
        
     }
@@ -19,7 +20,8 @@ namespace Pong{
     void GameplayState::init()
     {
         createPlayer(world);
-        world.addDrawSystem(new Systems::DrawSpritesSystem()); 
+        world.addDrawSystem(new Systems::DrawSpritesSystem());
+        world.addUpdateSystem(new Systems::PlayerMovementSystem());
      }
 
     void GameplayState::update(Engine::GameEngine &engine, int deltaInMS)

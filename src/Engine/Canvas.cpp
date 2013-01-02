@@ -32,6 +32,9 @@ namespace Engine{
 
     void Canvas::flip()
     {
+
+        
         SDL_Flip(canvas);
+        SDL_FillRect( canvas, &canvas->clip_rect, SDL_MapRGB( canvas->format, 0, 0, 0 ) );
     }
 }

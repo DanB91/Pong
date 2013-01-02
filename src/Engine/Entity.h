@@ -14,6 +14,8 @@ namespace Engine{
                 : id(id)
             {}
 
+            const std::string getID() { return id; }
+
             //component is stored in shared pointer
             void addComponent(const std::string &componentID, Component *component);
 
