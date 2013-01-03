@@ -10,7 +10,7 @@ namespace Pong{
     static void createPlayer(Engine::World &world)
     {
         auto player = world.createEntity("player");
-        player->addComponent("sprite", new Components::SpatialComponent(10, 0, 10, "../res/BallAndPaddle.png"));
+        player->addComponent("sprite", new Components::SpatialComponent(10, 0, 1, "../res/BallAndPaddle.png"));
 
        
     }

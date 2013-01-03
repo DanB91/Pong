@@ -8,18 +8,18 @@ namespace Pong{
     namespace Systems{
         
 
-        static void processMovement(Engine::Entity &e)
+        static void processMovement(Engine::Entity &e, int delta)
         {
             auto spatial = e.getComponent<Components::SpatialComponent>("sprite");
 
             
             if(Engine::Keyboard::isKeyDown(SDLK_UP))
             {
-                spatial->moveUp();
+                spatial->moveUp(delta);
             }
             else if(Engine::Keyboard::isKeyDown(SDLK_DOWN))
             {
-                spatial->moveDown();
+                spatial->moveDown(delta);
             }
 
         }
@@ -30,7 +30,7 @@ namespace Pong{
             {
                if(e->getID() == "player")
                {
-                   processMovement(*e);
+                   processMovement(*e, deltaInMS);
                }
             }
         }

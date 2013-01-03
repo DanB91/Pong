@@ -9,7 +9,7 @@ namespace Pong{
 
             for(auto entity : entities){
                 auto component = entity->getComponent<Components::SpatialComponent>("sprite"); 
-                mainScreen.drawDrawable(component->sprite, component->x, component->y);
+                mainScreen.drawDrawable(component->sprite, (int)component->x, (int)component->y);
             }
 
         }

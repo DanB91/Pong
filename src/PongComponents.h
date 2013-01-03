@@ -8,7 +8,8 @@ namespace Pong{
 
         struct SpatialComponent : public Engine::Component{     
         
-            int x, y, width, height, velocity;
+            float x, y, velocity;
+	    int width, height;
             Engine::Sprite sprite;
 
             SpatialComponent(int x, int y, int velocity, const std::string &spriteFileName)
@@ -19,8 +20,8 @@ namespace Pong{
                 width = sprite.getSDLSurface()->w;
             }
             
-            void moveUp(){ y -= velocity; }
-            void moveDown() { y += velocity; }
+            void moveUp(int delta){ y -= velocity * delta; }
+            void moveDown(int delta) { y += velocity * delta; }
 
 
         };
